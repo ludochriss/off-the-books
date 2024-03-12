@@ -1,0 +1,109 @@
+<mat-card-header>
+  <mat-card-title class="m-b-0">Trades</mat-card-title>
+</mat-card-header>
+<mat-card-content class="b-t-1">
+  <div class="row">
+    <div class="col-lg-4 col-sm-6">
+      <!-- Limit order -->
+      <mat-card class="b-1 shadow-none">
+        <mat-card-header>
+          <mat-card-title>Limit Order</mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="b-t-1">
+          <div class="p-5 m-10">
+            <mat-button-toggle-group class="w-100 d-flex">
+              <mat-button-toggle checked value="buy" class="button-toggle-buy flex-fill"
+                (change)="selectSide($event)">Buy</mat-button-toggle>
+              <mat-button-toggle value="sell" class="button-toggle-sell flex-fill"
+                (change)="selectSide($event)">Sell</mat-button-toggle>
+            </mat-button-toggle-group>
+          </div>
+          <form [formGroup]="limitForm">
+            <mat-form-field class="w-100" appearance="outline">
+              <mat-label>Price</mat-label>
+              <input matInput formControlName="limitPrice" placeholder="Limit price for the order" />
+            </mat-form-field>
+            <mat-form-field class="w-100" appearance="outline">
+              <mat-label>Quantity</mat-label>
+              <input matInput formControlName="limitQuantity" placeholder="Order quantity" />
+            </mat-form-field>
+            <!-- TODO:Make this a dropdown of pairs from binance -->
+            <mat-form-field class="w-100" appearance="outline">
+              <mat-label>Market Pair Symbol</mat-label>
+              <input matInput formControlName="limitMarketPair" placeholder="e.g. BTCUSDT" />
+            </mat-form-field>
+            <div></div>
+            <!-- TODO: make this hit the api -->
+          </form>
+          <div class="container">
+            <div class="row">
+              <button class="col" mat-flat-button color="primary" (click)="postLimitOrder()">
+                Place Limit Order
+              </button>
+              <button class="col" mat-flat-button color="primary" (click)="postLimitOrder()">
+                Add To Batch
+              </button>
+            </div>
+          </div>
+
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="col-lg-4 col-sm-6">
+      <!-- OCO Order -->
+      <mat-card class="b-1 shadow-none">
+        <mat-card-header>
+          <mat-card-title>One Cancels Other</mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="b-t-1">
+          <div class="p-5 m-10">
+            <mat-button-toggle-group class="w-100 d-flex">
+              <mat-button-toggle value="buy" class="button-toggle-buy flex-fill" (change)="selectSide($event)" checked>
+                Buy
+              </mat-button-toggle>
+              <mat-button-toggle value="sell" class="button-toggle-sell flex-fill"
+                (change)="selectSide($event)">Sell</mat-button-toggle>
+            </mat-button-toggle-group>
+          </div>
+          <form [formGroup]="ocoForm">
+            <mat-form-field class="w-100" appearance="outline">
+              <mat-label>Price</mat-label>
+              <input matInput formControlName="ocoPrice" placeholder="Limit price for the order" />
+            </mat-form-field>
+            <mat-form-field class="w-100" appearance="outline">
+              <mat-label>Stop</mat-label>
+              <input matInput formControlName="ocoStop"
+                placeholder="Stop price, this triggers the stop limit order to be placed" />
+            </mat-form-field>
+            <mat-form-field class="w-100" appearance="outline">
+              <mat-label>Limit</mat-label>
+              <input matInput formControlName="ocoStopLimitPrice" placeholder="Limit price for the order" />
+            </mat-form-field>
+
+            <mat-form-field class="w-100" appearance="outline">
+              <mat-label>Quantity</mat-label>
+              <input matInput formControlName="ocoQuantity" placeholder="Order quantity" />
+            </mat-form-field>
+            <!-- TODO:Make this a dropdown of pairs from binance -->
+            <mat-form-field class="w-100" appearance="outline">
+              <mat-label>Market Pair Symbol</mat-label>
+              <input matInput formControlName="ocoMarketPair" placeholder="e.g. BTCUSDT" />
+            </mat-form-field>
+          </form>
+          <div class="container">
+            <div class="row">
+
+
+              <!-- TODO: make this hit the api -->
+              <button class="col" (click)="postOcoOrder()" mat-flat-button color="primary">
+                Place OCO Order </button>
+              <button class="col" mat-flat-button color="primary" (click)="postLimitOrder()">
+                Add To Batch
+              </button>
+
+            </div>
+          </div>
+
+        </mat-card-content>
+      </mat-card>
+    </div>

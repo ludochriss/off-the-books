@@ -1,0 +1,75 @@
+<div class="col">
+  <mat-card class="b-1 shadow-none">
+    <mat-card-header>
+      <mat-card-title>Open Orders</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="b-t-1">
+      <div class="container">
+        <div class="row">
+          <div class="col d-flex justify-content-center">
+            <button (click)="getOrders()" mat-flat-button color="primary" matTooltip="Info about the action"
+              class="m-r-8">
+              Get All Open Orders
+            </button>
+          </div>
+
+        </div>
+      </div>
+      <mat-card class="cardWithShadow theme-card">
+        <div *ngIf="openOrders">
+          <table mat-table [dataSource]="openOrderDataSource">
+            <ng-container matColumnDef="symbol">
+              <th mat-header-cell *matHeaderCellDef> Symbol </th>
+              <td mat-cell *matCellDef="let order"> {{order.symbol}} </td>
+            </ng-container>
+            <ng-container matColumnDef="price">
+              <th mat-header-cell *matHeaderCellDef> Price </th>
+              <td mat-cell *matCellDef="let order"> {{order.price}} </td>
+            </ng-container>
+            <ng-container matColumnDef="quantity">
+              <th mat-header-cell *matHeaderCellDef> Quantity </th>
+              <td mat-cell *matCellDef="let order">{{order.quantity}}
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="side">
+              <th mat-header-cell *matHeaderCellDef> Side </th>
+              <td mat-cell *matCellDef="let order">
+                {{order.side}}
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="orderId">
+              <th mat-header-cell *matHeaderCellDef> Order Id </th>
+              <td mat-cell *matCellDef="let order">{{order.orderId}}
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="clientOrderId">
+              <th mat-header-cell *matHeaderCellDef> Client Order Id </th>
+              <td mat-cell *matCellDef="let order">
+                {{order.clientOrderId}}
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="actions">
+              <th mat-header-cell *matHeaderCellDef> Actions </th>
+              <td mat-cell *matCellDef="let order">
+              
+                <button mat-icon-button color="secondary" (click)="cancelOrder(order.orderId)"
+                  matTooltip="Attach OCO order to execution">
+                  <mat-icon aria-label="Attach order">timeline</mat-icon>
+                </button>
+                <button mat-icon-button color="secondary" (click)="cancelOrder(order.orderId)">
+                  <mat-icon matTooltip="Cancel Order"
+                  aria-label="Cancel order">delete</mat-icon>
+                </button>
+              </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+          <mat-paginator [pageSizeOptions]="[5,10,20]" [length]="openOrders.length" [pageSize]="5" showFirstLastButtons>
+          </mat-paginator>
+
+        </div>
+      </mat-card>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -1,0 +1,14 @@
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    color: blueviolet;
+  }
+  50% {
+    transform: scale(1.1);
+    color: crimson;
+  }
+}
+
+.pulse {
+  animation: pulse 3s infinite;
+}
