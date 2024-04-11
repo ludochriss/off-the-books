@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://my-api.com/api'
-};
+  apiUrl: 'https://cg-apim-021090.azure-api.net/cg-function-app-dev/v1'
+}

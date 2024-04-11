@@ -12,6 +12,7 @@ import { OrderModel, OrderTriggerModel, StrategyOrderModel } from '../models/ord
 const headers = new HttpHeaders({
   'Content-Type': 'application/json',
   Accept: 'application/json',
+  'Ocp-Apim-Subscription-Key': environment.value
 });
 @Injectable({ providedIn: 'root' })
 export class CryptoService {
@@ -65,4 +66,5 @@ export class CryptoService {
       orderDetails: order,
     };
   }
+  
 }

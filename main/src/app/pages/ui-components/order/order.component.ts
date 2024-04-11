@@ -38,7 +38,7 @@ export class OrderComponent {
     ]),
     ocoStop: new FormControl('', [
       Validators.required,
-      Validators.pattern('^[a-zA-Z]*$'),
+      Validators.pattern('^[0-9]*\.?[0-9]*$'),
     ]),
     ocoStopLimitPrice: new FormControl('', [
       Validators.required,

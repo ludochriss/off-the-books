@@ -1,14 +1,14 @@
 import { NavItem } from './nav-item/nav-item';
 
 export const navItems: NavItem[] = [
-  {
-    navCap: 'Home',
-  },
-  {
-    displayName: 'Dashboard',
-    iconName: 'layout-dashboard',
-    route: '/dashboard',
-  },
+  // {
+  //   navCap: 'Home',
+  // },
+  // {
+  //   displayName: 'Dashboard',
+  //   iconName: 'layout-dashboard',
+  //   route: '/dashboard',
+  // },
   { navCap: 'Info' },
 
   {
@@ -27,62 +27,62 @@ export const navItems: NavItem[] = [
     externalUrl: 'https://github.com/ludochriss',
   },
   {
-    navCap: 'Ui Components',
+    navCap: 'Concepts',
   },
   {
     displayName: 'Trade',
     iconName: 'currency-bitcoin',
     route: '/ui-components/trade',
   },
+  // {
+  //   displayName: 'Badge',
+  //   iconName: 'rosette',
+  //   route: '/ui-components/badge',
+  // },
+  // {
+  //   displayName: 'Chips',
+  //   iconName: 'poker-chip',
+  //   route: '/ui-components/chips',
+  // },
+  // {
+  //   displayName: 'Lists',
+  //   iconName: 'list',
+  //   route: '/ui-components/lists',
+  // },
+  // {
+  //   displayName: 'Menu',
+  //   iconName: 'layout-navbar-expand',
+  //   route: '/ui-components/menu',
+  // },
+  // {
+  //   displayName: 'Tooltips',
+  //   iconName: 'tooltip',
+  //   route: '/ui-components/tooltips',
+  // },
   {
-    displayName: 'Badge',
-    iconName: 'rosette',
-    route: '/ui-components/badge',
+    navCap: 'Auth -Coming soon',
   },
-  {
-    displayName: 'Chips',
-    iconName: 'poker-chip',
-    route: '/ui-components/chips',
-  },
-  {
-    displayName: 'Lists',
-    iconName: 'list',
-    route: '/ui-components/lists',
-  },
-  {
-    displayName: 'Menu',
-    iconName: 'layout-navbar-expand',
-    route: '/ui-components/menu',
-  },
-  {
-    displayName: 'Tooltips',
-    iconName: 'tooltip',
-    route: '/ui-components/tooltips',
-  },
-  {
-    navCap: 'Auth',
-  },
-  {
-    displayName: 'Login',
-    iconName: 'lock',
-    route: '/authentication/login',
-  },
-  {
-    displayName: 'Register',
-    iconName: 'user-plus',
-    route: '/authentication/register',
-  },
-  {
-    navCap: 'Extra',
-  },
-  {
-    displayName: 'Icons',
-    iconName: 'mood-smile',
-    route: '/extra/icons',
-  },
-  {
-    displayName: 'Sample Page',
-    iconName: 'aperture',
-    route: '/extra/sample-page',
-  },
+  // {
+  //   displayName: 'Login',
+  //   iconName: 'lock',
+  //   route: '/authentication/login',
+  // },
+  // {
+  //   displayName: 'Register',
+  //   iconName: 'user-plus',
+  //   route: '/authentication/register',
+  // },
+  // {
+  //   navCap: 'Extra',
+  // },
+  // {
+  //   displayName: 'Icons',
+  //   iconName: 'mood-smile',
+  //   route: '/extra/icons',
+  // },
+  // {
+  //   displayName: 'Sample Page',
+  //   iconName: 'aperture',
+  //   route: '/extra/sample-page',
+  // },
 ];

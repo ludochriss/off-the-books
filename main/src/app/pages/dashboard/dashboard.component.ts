@@ -15,11 +15,20 @@ import {
   ApexMarkers,
   ApexResponsive,
 } from 'ng-apexcharts';
-
+import { CryptoService } from 'src/app/services/cryptoService';
 interface month {
   value: string;
   viewValue: string;
 }
+interface accountDenom {
+  value: string;
+  viewValue: string;
+}
+interface spotBtc{ ammount : number;}
+interface spotEth{amount  : number}
+interface spotSol{amount : number}
+//#region Charts & Graphs Exports
+
 export interface recentOrdersChart{
   series: ApexAxisChartSeries;
   chart: ApexChart;
@@ -90,6 +99,7 @@ export interface productsData {
   budget: number;
   priority: string;
 }
+//#endregion
 
 // ecommerce card
 interface productcards {
@@ -155,6 +165,21 @@ export class AppDashboardComponent {
   displayedColumns: string[] = ['assigned', 'name', 'priority', 'budget'];
   dataSource = ELEMENT_DATA;
 
+  ngOnInit(): void {
+   this.getAccountBalance();
+
+  }
+  getAccountBalance(){
+    this.cryptoService.$getAccountInfo().subscribe((data: any) => {
+      console.log('account info: ', data);
+    });
+  }
+
+  accountDenom : accountDenom[] = [
+  {value : 'BTC', viewValue : 'BTC'},
+  {value: 'USD', viewValue: 'USD'},
+  {value :'AUD', viewValue: 'AUD'},
+  ]
   months: month[] = [
     { value: 'mar', viewValue: 'March 2023' },
     { value: 'apr', viewValue: 'April 2023' },
@@ -235,25 +260,118 @@ export class AppDashboardComponent {
       rprice: '375',
     },
   ];
+  //# endregion
+//#region Constructor
+  constructor(private cryptoService: CryptoService) {
 
-  constructor() {
-
-    this
-    // sales overview chart
+    //Account balance chart
     this.salesOverviewChart = {
       series: [
         {
-          name: 'Eanings this month',
+          name: 'Bitcoin',
           data: [355, 390, 300, 350, 390, 180, 355, 390],
           color: '#5D87FF',
         },
         {
-          name: 'Old Expense this month',
+          name: 'Ethereum',
           data: [280, 1250, 325, 215, 250, 310, 280, 250],
           color: '#49BEFF',
         },
         {
-          name: 'Expense this month',
+          name: 'Solana',
+          data: [280, 250, 325, 215, 250, 310, 280, 250],
+          color: '#49BEFF',
+        },
+      ],
+
+      grid: {
+        borderColor: 'rgba(0,0,0,0.1)',
+        strokeDashArray: 3,
+        xaxis: {
+          lines: {
+            show: false,
+          },
+        },
+      },
+      plotOptions: {
+        bar: { horizontal: false, columnWidth: '35%', borderRadius: [4] },
+      },
+      chart: {
+        type: 'bar',
+        height: 390,
+        offsetX: -15,
+        toolbar: { show: true },
+        foreColor: '#adb0bb',
+        fontFamily: 'inherit',
+        sparkline: { enabled: false },
+      },
+      dataLabels: { enabled: false },
+      markers: { size: 0 },
+      legend: { show: true },
+      xaxis: {
+        type: 'category',
+        categories: [
+          '16/08',
+          '17/08',
+          '18/08',
+          '19/08',
+          '20/08',
+          '21/08',
+          '22/08',
+          '23/08',
+        ],
+        labels: {
+          style: { cssClass: 'grey--text lighten-2--text fill-color' },
+        },
+      },
+      yaxis: {
+        show: true,
+        min: 0,
+        max: 400,
+        tickAmount: 4,
+        labels: {
+          style: {
+            cssClass: 'grey--text lighten-2--text fill-color',
+          },
+        },
+      },
+      stroke: {
+        show: true,
+        width: 3,
+        lineCap: 'butt',
+        colors: ['transparent'],
+      },
+      tooltip: { theme: 'light' },
+
+      responsive: [
+        {
+          breakpoint: 600,
+          options: {
+            plotOptions: {
+              bar: {
+                borderRadius: 3,
+              },
+            },
+          },
+        },
+      ],
+    };
+
+    // sales overview chart
+    this.salesOverviewChart = {
+      series: [
+        {
+          name: 'Positive Trades',
+          data: [355, 390, 300, 350, 390, 180, 355, 390],
+          color: '#5D87FF',
+        },
+        {
+          name: 'Negative Trades',
+          data: [280, 1250, 325, 215, 250, 310, 280, 250],
+          color: '#49BEFF',
+        },
+        {
+          name: 'Balance',
           data: [280, 250, 325, 215, 250, 310, 280, 250],
           color: '#49BEFF',
         },
@@ -423,4 +541,5 @@ export class AppDashboardComponent {
       },
     };
   }
+  //#endregion
 }
