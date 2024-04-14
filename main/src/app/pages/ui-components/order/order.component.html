@@ -13,9 +13,9 @@
           <div class="p-5 m-10">
             <mat-button-toggle-group class="w-100 d-flex">
               <mat-button-toggle checked value="buy" class="button-toggle-buy flex-fill"
-                (change)="selectSide($event)">Buy</mat-button-toggle>
+                (change)="selectSide($event,'limit')">Buy</mat-button-toggle>
               <mat-button-toggle value="sell" class="button-toggle-sell flex-fill"
-                (change)="selectSide($event)">Sell</mat-button-toggle>
+                (change)="selectSide($event, 'limit')">Sell</mat-button-toggle>
             </mat-button-toggle-group>
           </div>
           <form [formGroup]="limitForm">
@@ -37,12 +37,13 @@
           </form>
           <div class="container">
             <div class="row">
-              <button class="col" mat-flat-button color="primary" (click)="postLimitOrder()">
+              <button class="col" mat-flat-button color="primary" (click)="postLimitOrder()"
+              matTooltip="{{limitTooltipMessage}}">
                 Place Limit Order
               </button>
-              <button class="col" mat-flat-button color="primary" (click)="postLimitOrder()">
+              <!-- <button class="col" mat-flat-button color="primary" (click)="postLimitOrder()">
                 Add To Batch
-              </button>
+              </button> -->
             </div>
           </div>
 
@@ -58,11 +59,11 @@
         <mat-card-content class="b-t-1">
           <div class="p-5 m-10">
             <mat-button-toggle-group class="w-100 d-flex">
-              <mat-button-toggle value="buy" class="button-toggle-buy flex-fill" (change)="selectSide($event)" checked>
+              <mat-button-toggle value="buy" class="button-toggle-buy flex-fill" (change)="selectSide($event,'oco')" checked>
                 Buy
               </mat-button-toggle>
               <mat-button-toggle value="sell" class="button-toggle-sell flex-fill"
-                (change)="selectSide($event)">Sell</mat-button-toggle>
+                (change)="selectSide($event,'oco')">Sell</mat-button-toggle>
             </mat-button-toggle-group>
           </div>
           <form [formGroup]="ocoForm">
@@ -97,9 +98,9 @@
               <!-- TODO: make this hit the api -->
               <button class="col" (click)="postOcoOrder()" mat-flat-button color="primary">
                 Place OCO Order </button>
-              <button class="col" mat-flat-button color="primary" (click)="postLimitOrder()">
+              <!-- <button class="col" mat-flat-button color="primary" (click)="postLimitOrder()">
                 Add To Batch
-              </button>
+              </button> -->
 
             </div>
           </div>

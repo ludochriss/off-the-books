@@ -10,7 +10,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: '/ui-components/about-me',
+        redirectTo: '/ui-components/about-site',
         pathMatch: 'full',
       },
       {

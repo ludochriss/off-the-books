@@ -4,19 +4,61 @@
     <mat-tab label="About">
       <mat-card class="cardWithShadow theme-card">
         <mat-card-content class="b-t-1">
+          <p class="about-me t-c">Thanks for visiting!</p>
           <p class="text">This site is built using angular and hosted in a Azure Static Web App container on azure.</p>
-          <p class="text">Built using the Modernize template <a href="https://adminmart.com/product/modernize-free-angular-material-template/">here</a></p>
-        
-                </mat-card-content>
+          <p class="text">It's a portfolio piece and a testing ground for concepts.</p>
+          <p class="text">Built using the Modernize template <a
+              href="https://adminmart.com/product/modernize-free-angular-material-template/">here</a></p>
+          <p class="text">The Trade page is attached to test network from binance. Click 'Get Balance' to get the mock
+            balance and place a limit or OCO order to test.
+            Once an order is placed it will be visible as an Open Order.
+          </p>
+          <h2 class="h2 t-c">Concepts</h2>
+          <div>
+            <h3>Off-The-Books exchange order book</h3>
+            <p class="text">The order book is an off exchange location for orders to be placed. Exchanges and large
+              players in the space use order book data to trade against market participants by selling order book
+              information to other financial players. This is designed to protect against that on-sell of information.
+            </p>
+            <p class="text">The order book is a simple unstructued data table that holds the orders in a list and is
+              updated in real time as orders are placed and removed.</p>
+            <p class="text">This will be used to trigger orders as a stop loss or take profit for Binance Spot orders as
+              binance does not allow this funcitonality for spot markets. </p>
+            <h3>Trading View alert based trades</h3>
+          </div>
+          <p class="text">The Trading view alert based order trigger allows integration with tradingviews charting
+            software to leverage the alert system to trigger orders from technical analysis rather than a single price
+            level, Orders can be placed from gradients and also conditions such as moving average crosses, as well as
+            any other condition that can trigger an alert.</p>
+          <h2 class="h2 t-c">Resources</h2>
+          <p class="text">Azure Functions are used as a back end APIs which depend on a library of code. Severless
+            architecture minimizes the hosting cost to about $1 a month.
+            The Apis are wrapped in an api management layer to provide a single point of access and to provide a
+            security layer.
+          </p>
+          <p class="text">Currently using Table storage as a data layer with mongo on roadmap.</p>
+        </mat-card-content>
       </mat-card>
     </mat-tab>
-    <mat-tab label="Site Map">
-      <img 
-      src="https://lh3.googleusercontent.com/drive-viewer/AKGpihbxvG78t37-a-FFCvnj-k_0BqWNoZnlotjuZowfJsT1rl_3zhrlkxEKKzpmbkETtk89K3mesg50ctoCH16MliTXCKdnT-xeYA=s1600-v0"
-      alt="site-map"/>
+    <mat-tab label="Site Architecture">
+      <div>
+<p class="about-me">The site is built using Angular and hosted in an Azure Static Web App container on Azure. Mongo and Authentication with B2C and federated identities coming soon. You can trade from the Binance testNet.</p>
+        <img
+        src="https://lh3.googleusercontent.com/drive-viewer/AKGpihbxvG78t37-a-FFCvnj-k_0BqWNoZnlotjuZowfJsT1rl_3zhrlkxEKKzpmbkETtk89K3mesg50ctoCH16MliTXCKdnT-xeYA=s1600-v0"
+        alt="site-map" />
+      </div>
+    </mat-tab>
+    <mat-tab label="About Me">
+      <div class="p-10">
+
+        <p class="about-me t-c" >
+          Christopher Gantert is an enthusiastic junior software developer with a knack for problem-solving and a passion for innovation.</p>
+          <p class ="about-me">With expertise in C#, JavaScript, HTML/CSS, Entity Framework, Angular and the .NET framework(ASP.Net, Core). Versed with low-code solutions such as Power Automate and Logic Apps, as well as experience with both SQL and NoSQL databases.</p> 
+          <p class="about-me t-c">
+            Beyond technical skills, Christopher possesses strong interpersonal skills, customer service expertise, and a collaborative mindset, making him a valuable asset to any team. Connect with Christopher on <a target="_blank" href="https://www.linkedin.com/in/christopher-gantert/">LinkedIn</a> or view his projects on <a href ="https://github.com/ludochriss" target="_blank">GitHub</a>
+          </p>
+        </div>
     </mat-tab>
   </mat-tab-group>
   <mat-card-content class="b-t-1">
-
-
   </mat-card-content>

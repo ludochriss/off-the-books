@@ -12,6 +12,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class OrderComponent {
 
   side: string = '';
+  limitTooltipMessage = this.side == 'buy'? 'Buy at a price lower than the current market price' : 'Sell at a price higher than the current market price';
 
   limitForm = new FormGroup({
     limitPrice: new FormControl('', [
@@ -62,7 +63,8 @@ export class OrderComponent {
     this.orderPlaced.emit(order);
   }
 
-  selectSide(event: MatButtonToggleChange) {
+  //TODO: change this to operate for each type of order, limit and oco, currently being changed on both orders
+  selectSide(event: MatButtonToggleChange, type:string) {
     this.side = event.source.value.toUpperCase() === 'BUY' ? 'BUY' : 'SELL';
     console.log(this.side);
   }

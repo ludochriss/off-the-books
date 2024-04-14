@@ -11,13 +11,13 @@ export const navItems: NavItem[] = [
   // },
   { navCap: 'Info' },
 
+  // {
+  //   displayName: 'About The Dev',
+  //   iconName: 'user',
+  //   route: '/ui-components/about-me',
+  // },
   {
-    displayName: 'About The Dev',
-    iconName: 'user',
-    route: '/ui-components/about-me',
-  },
-  {
-    displayName: 'About This Site',
+    displayName: 'About',
     iconName: 'sitemap',
     route: '/ui-components/about-site',
   },
