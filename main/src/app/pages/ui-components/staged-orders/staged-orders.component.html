@@ -1,0 +1,64 @@
+<div class="col" *ngIf="stagedOrders">
+  <mat-card class="b-1 shadow-none">
+    <mat-card-header>
+      <mat-card-title>Staged Orders</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="b-t-1">
+      <div class="container">
+        <div class="row">
+          <div class="col d-flex justify-content-center">
+
+          </div>
+        </div>
+      </div>
+      <mat-card class="cardWithShadow theme-card">
+        
+          <table mat-table [dataSource]="stagedOrdersDataSource">
+            <ng-container matColumnDef="symbol">
+              <th mat-header-cell *matHeaderCellDef> Symbol </th>
+              <td mat-cell *matCellDef="let stagedOrders"> {{stagedOrders.symbol}} </td>
+            </ng-container>
+            <ng-container matColumnDef="side">
+              <th mat-header-cell *matHeaderCellDef> Side </th>
+              <td mat-cell *matCellDef="let stagedOrders"> {{stagedOrders.side}} </td>
+            </ng-container>
+            <ng-container matColumnDef="price">
+              <th mat-header-cell *matHeaderCellDef> Price </th>
+              <td mat-cell *matCellDef="let stagedOrders">{{stagedOrders.price}}
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="stopPrice">
+              <th mat-header-cell *matHeaderCellDef> Stop Price </th>
+              <td mat-cell *matCellDef="let stagedOrders">{{stagedOrders.stopPrice}}
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="stopLimitPrice">
+              <th mat-header-cell *matHeaderCellDef> Stop Limit Price </th>
+              <td mat-cell *matCellDef="let stagedOrders">{{stagedOrders.stopLimitPrice}}
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="triggerType">
+              <th mat-header-cell *matHeaderCellDef> Trigger Type </th>
+              <td mat-cell *matCellDef="let stagedOrders">{{stagedOrders.triggerType}}
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="type">
+              <th mat-header-cell *matHeaderCellDef> Type </th>
+              <td mat-cell *matCellDef="let stagedOrders">{{stagedOrders.type}}
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="quantity">
+              <th mat-header-cell *matHeaderCellDef> Quantity </th>
+              <td mat-cell *matCellDef="let stagedOrders">{{stagedOrders.quantity}}
+              </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns ;"></tr>
+          </table>
+          <mat-paginator [pageSizeOptions]="[5,10,20]" [length]="5" [pageSize]="5" showFirstLastButtons>
+          </mat-paginator>
+        
+      </mat-card>
+    </mat-card-content>
+  </mat-card>
+</div>

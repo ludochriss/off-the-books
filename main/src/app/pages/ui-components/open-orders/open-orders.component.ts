@@ -28,7 +28,18 @@ export class OpenOrdersComponent {
   ngOnInit(): void {
     this.getOrders();
   }
-  cancelOrder(orderId:number){}
+  cancelOrder(orderId:number,symbol:string){
+    this.cryptoService.$cancelOrderById(orderId,symbol).subscribe((data: any) => {
+      console.log(data);
+      if(data.result.status == 'CANCELED')
+        {
+          this.snackBar.open('Order Cancelled', 'Close', {
+            duration: 2000,
+          });
+        }
+      this.getOrders();
+    });
+}
 
   getOrders(){
     this.cryptoService.$getOrders().subscribe((data: any) => {
@@ -42,10 +53,7 @@ export class OpenOrdersComponent {
           stopLimitPrice: orderData.stopLimitPrice ? parseFloat(orderData.stopLimitPrice) : undefined,
           type: orderData.type,
           orderId: parseInt(orderData.orderId),
-          clientOrderId: orderData.clientOrderId
-
-
-          
+          clientOrderId: orderData.clientOrderId          
         };
       });
       this.openOrderDataSource.data = this.openOrders;

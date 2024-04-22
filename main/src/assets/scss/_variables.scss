@@ -1,13 +1,20 @@
 @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap");
 
+
+
+// Morning Sky: #CAE4DB
+// Honey: #DCAE1D
+// Cerulean: #00303F 
+// Mist: #7A9D96 
+
 // font
 $font-family: 'Plus Jakarta Sans', sans-serif;
 
 // light color variable
-$sidebarbg: white;
-$background: white;
-$cardbg: white;
-$toolbar: white;
+$sidebarbg: #CAE4DB;
+$background: #CAE4DB;
+$cardbg: #CAE4DB;
+$toolbar: #CAE4DB;
 $cardshadow: rgb(145 158 171 / 30%) 0px 0px 2px 0px, rgb(145 158 171 / 12%) 0px 12px 24px -4px;
 $hoverBgColor: #f6f9fc;
 
@@ -33,11 +40,11 @@ $header-height: 70px !default;
 
 
 //BorderColor
-$borderColor: #e5eaef;
-$borderformColor: #dfe5ef;
+$borderColor: #00303F;
+$borderformColor: #00303F;
 
 // custom
-$primary: #5d87ff;
+$primary: #00303F ;
 $accent: #49beff;
 $warning: #ffae1f;
 $error: #fa896b;

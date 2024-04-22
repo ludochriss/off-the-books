@@ -12,7 +12,6 @@
               Get All Open Orders
             </button>
           </div>
-
         </div>
       </div>
       <mat-card class="cardWithShadow theme-card">
@@ -52,11 +51,11 @@
               <th mat-header-cell *matHeaderCellDef> Actions </th>
               <td mat-cell *matCellDef="let order">
               
-                <button mat-icon-button color="secondary" (click)="cancelOrder(order.orderId)"
+                <button mat-icon-button color="secondary" (click)="cancelOrder(order.orderId, order.symbol)"
                   matTooltip="Attach OCO order to execution">
                   <mat-icon aria-label="Attach order">timeline</mat-icon>
                 </button>
-                <button mat-icon-button color="secondary" (click)="cancelOrder(order.orderId)">
+                <button mat-icon-button color="secondary" (click)="cancelOrder(order.orderId, order.symbol)">
                   <mat-icon matTooltip="Cancel Order"
                   aria-label="Cancel order">delete</mat-icon>
                 </button>
@@ -65,7 +64,7 @@
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
           </table>
-          <mat-paginator [pageSizeOptions]="[5,10,20]" [length]="openOrders.length" [pageSize]="5" showFirstLastButtons>
+          <mat-paginator class="paginator"  [pageSizeOptions]="[5,10,20]" [length]="openOrders.length" [pageSize]="5" showFirstLastButtons>
           </mat-paginator>
 
         </div>

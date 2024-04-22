@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatButtonToggleChange } from '@angular/material/button-toggle';
 import { OrderModel } from 'src/app/models/order.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import{MatSlideToggle} from '@angular/material/slide-toggle';
 
 @Component({
   selector: 'app-order',
@@ -13,7 +14,7 @@ export class OrderComponent {
 
   side: string = '';
   limitTooltipMessage = this.side == 'buy'? 'Buy at a price lower than the current market price' : 'Sell at a price higher than the current market price';
-
+ 
   limitForm = new FormGroup({
     limitPrice: new FormControl('', [
       Validators.required,
@@ -57,7 +58,7 @@ export class OrderComponent {
   ngOnInit(){
     this.side = 'buy'
   }
-  
+  attachOrderToggle(){}
   //emitter
   onOrderPlaced(order: OrderModel){
     this.orderPlaced.emit(order);

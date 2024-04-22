@@ -25,6 +25,7 @@ import { OpenOrdersComponent } from './open-orders/open-orders.component';
 import { BalancesComponent } from './balances/balances.component';
 import { AboutSiteComponent } from './about-site/about-site.component';
 import { AboutMeComponent } from './about-me/about-me.component';
+import { StagedOrdersComponent } from './staged-orders/staged-orders.component';
 
 @NgModule({
   imports: [
@@ -50,6 +51,7 @@ import { AboutMeComponent } from './about-me/about-me.component';
     BalancesComponent,
     AboutSiteComponent,
     AboutMeComponent,
+    StagedOrdersComponent,
   ],
 })
 export class UicomponentsModule {}

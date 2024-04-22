@@ -23,6 +23,17 @@ export class CryptoService {
     return this.client.get(this.cryptoApiUrl + '/GetAccountInfo');
   }
 
+  $cancelOrderById(orderId: number,symbol:string): Observable<any> {
+
+    let body = {
+      orderId: orderId,
+      symbol: symbol.toUpperCase(),
+    };    
+    return this.client.post(this.cryptoApiUrl + '/CancelOrder', body,{
+      headers: headers,
+    });
+  }
+
   $postOrder(orderModel: any): Observable<any> {
     let payload = this.buildOrderPayload(orderModel);
     console.log('sending order payload: ', payload);
@@ -41,30 +52,33 @@ export class CryptoService {
     }
     return this.client.get(this.cryptoApiUrl + '/QueryExistingOrders');
   }
+$getStrategyOrders(): Observable<any> {
+    return this.client.get(this.cryptoApiUrl + '/GetStrategyOrders');
+  }
+
   $postStrategyOrder(payload:StrategyOrderModel): Observable<any> {    
     return this.client.post(this.cryptoApiUrl + '/CreateStrategyOrder',payload, {
       headers: headers,
     });
   }
 
-  buildStrategyPayload(
-    order: OrderModel,
-    orderType: string,
-    orderSubType: string,
-    orderTrigger: OrderTriggerModel
-  ) {
-    return {
-      orderType: orderType,
-      orderSubType: '',
-      orderTrigger: {},
-      orderDetails: order,
-    };
-  }
+  // buildStrategyPayload(
+  //   order: OrderModel,
+  //   orderType: string,
+  //   orderSubType: string,
+  //   orderTrigger: OrderTriggerModel
+  // ) {
+  //   return {
+  //     orderType: orderType,
+  //     orderSubType: '',
+  //     orderTrigger: {},
+  //     orderDetails: order,
+  //   };
+  // }
   buildOrderPayload(order: OrderModel) {
     return {
       orderType: order.type,
       orderDetails: order,
     };
-  }
-  
+  }  
 }
