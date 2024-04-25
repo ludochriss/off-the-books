@@ -36,18 +36,18 @@ export class AppTradeComponent {
   getOrders(symbol?: string) {
     if (symbol) {
       this.cryptoService.$getOrders(symbol).subscribe((data: any) => {
-        console.log('Orders : ', data);
+        // console.log('Orders : ', data);
         this.orders = data.responseData;
       });
     } else {
       this.cryptoService.$getOrders().subscribe((data: any) => {
-        console.log('Orders : ', data);
+        // console.log('Orders : ', data);
         this.orders = data.responseData;
       });
     }
   }
   postOrder(order: OrderModel) {
-    console.log('Order Placed', order);
+    // console.log('Order Placed', order);
     this.cryptoService.$postOrder(order).subscribe((data: any) => {
       if (data.responseData) {
         this.snackBar.open('Order Placed', '', { duration: 2000 });
@@ -63,7 +63,7 @@ export class AppTradeComponent {
       } else {
         this.snackBar.open('Strategy Order Failed', '', { duration: 2000 });
       }
-      console.log('Response : ', data);
+      // console.log('Response : ', data);
     });
   }
 }

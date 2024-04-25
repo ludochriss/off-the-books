@@ -30,7 +30,7 @@ export class OpenOrdersComponent {
   }
   cancelOrder(orderId:number,symbol:string){
     this.cryptoService.$cancelOrderById(orderId,symbol).subscribe((data: any) => {
-      console.log(data);
+      // console.log(data);
       if(data.result.status == 'CANCELED')
         {
           this.snackBar.open('Order Cancelled', 'Close', {
@@ -57,7 +57,7 @@ export class OpenOrdersComponent {
         };
       });
       this.openOrderDataSource.data = this.openOrders;
-      console.log(this.openOrders);
+      // console.log(this.openOrders);
     });
   }   
 }

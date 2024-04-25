@@ -110,14 +110,14 @@ export class OrderComponent {
         side: this.side,
         type: 'oco',
       }; //TODO: add an alert to the user if side is not selected
-      console.log('OCO order valid!');
+      // console.log('OCO order valid!');
       return ocoOrder;
     } else return null;
   }
   postLimitOrder() {
     let limitOrder = this.validateLimitOrder();
     if (limitOrder) {
-      console.log('Limit order posted from the order component')
+      // console.log('Limit order posted from the order component')
       this.onOrderPlaced(limitOrder); 
       // this.cryptoService.$postLimitOrder(limitOrder).subscribe((data: any) => {
       //   console.log(data);
@@ -127,7 +127,7 @@ export class OrderComponent {
   postOcoOrder() {
     let ocoOrder = this.validateOcoOrder();
     if (ocoOrder) {
-      console.log('OCO order posted from the order component');
+      // console.log('OCO order posted from the order component');
       this.onOrderPlaced(ocoOrder);
       //this.cryptoService.$postLimitOrder(ocoOrder).subscribe((data: any) => {});
     } else console.log('OcoOrder not valid!');

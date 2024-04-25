@@ -1,5 +1,4 @@
 import { Component, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { StrategyOrderModel } from 'src/app/models/order.model';
 import { CryptoService } from 'src/app/services/cryptoService';
@@ -24,7 +23,7 @@ paginator:any;
 
 getStagedOrders(){
   this.cryptoService.$getStrategyOrders().subscribe((data: any) => {
-    console.log('Data : ',data);
+    // console.log('Data : ',data);
     this.stagedOrders = data.responseData.map((orderData:any) => {
       return {
          symbol: orderData.symbol,
@@ -41,7 +40,7 @@ getStagedOrders(){
       };
     });
     this.stagedOrdersDataSource.data = this.stagedOrders;
-    console.log('Staged Orders', this.stagedOrders);
+    // console.log('Staged Orders', this.stagedOrders);
   });
 }
 

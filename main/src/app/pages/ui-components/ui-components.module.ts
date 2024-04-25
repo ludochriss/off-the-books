@@ -26,6 +26,8 @@ import { BalancesComponent } from './balances/balances.component';
 import { AboutSiteComponent } from './about-site/about-site.component';
 import { AboutMeComponent } from './about-me/about-me.component';
 import { StagedOrdersComponent } from './staged-orders/staged-orders.component';
+import { TradingviewOrdersComponent } from './tradingview-orders/tradingview-orders.component';
+import  {ClipboardModule} from '@angular/cdk/clipboard';
 
 @NgModule({
   imports: [
@@ -36,6 +38,7 @@ import { StagedOrdersComponent } from './staged-orders/staged-orders.component';
     ReactiveFormsModule,
     TablerIconsModule.pick(TablerIcons),
     MatNativeDateModule,
+    ClipboardModule,
   ],
   declarations: [
     AppBadgeComponent,
@@ -52,6 +55,7 @@ import { StagedOrdersComponent } from './staged-orders/staged-orders.component';
     AboutSiteComponent,
     AboutMeComponent,
     StagedOrdersComponent,
+    TradingviewOrdersComponent,
   ],
 })
 export class UicomponentsModule {}

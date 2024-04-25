@@ -16,22 +16,27 @@ export class BalancesComponent {
   spotAssets: SpotAsset[];
   spotAssetsDataSource: MatTableDataSource<SpotAsset> = new MatTableDataSource<SpotAsset>();
   accInfo: any;
-  displayedColumns = ['asset', 'free', 'actions']; 
+  displayedColumns = ['asset', 'free', 'actions'];
 
   constructor(
     private cryptoService: CryptoService,
     private snackBar: MatSnackBar
-  ) {}
+  ) { }
   getAccountInfo() {
     this.cryptoService.$getAccountInfo().subscribe((data: any) => {
       this.accInfo = data;
       if (this.accInfo && Array.isArray(this.accInfo.responseData.balances)) {
         this.spotAssets = this.accInfo.responseData.balances.map(
           (balance: any) => {
-            return {
-              asset: balance.asset,
-              free: parseFloat(balance.free),
-              locked: parseFloat(balance.locked),
+            if (balance.free > 0 || balance.locked > 0) {
+              return {
+                asset: balance.asset,
+                free: parseFloat(balance.free),
+                locked: parseFloat(balance.locked),
+              }
+            }
+            else {
+              return null;
             }
           }
         );
@@ -39,8 +44,8 @@ export class BalancesComponent {
           this.spotAssets
         );
         this.spotAssetsDataSource.paginator = this.paginator;
-        console.log(this.spotAssetsDataSource);
-        console.log(this.spotAssets);
+        // console.log(this.spotAssetsDataSource);
+        // console.log(this.spotAssets);
       } else {
       }
     });

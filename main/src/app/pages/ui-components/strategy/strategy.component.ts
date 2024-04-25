@@ -92,10 +92,10 @@ export class StrategyComponent {
 
   selectSide(event: MatButtonToggleChange) {
     this.side = event.source.value.toUpperCase() === 'BUY' ? 'BUY' : 'SELL';
-    console.log(this.side);
+    // console.log(this.side);
   }
   processStrategy() {
-    console.log(this.selectedOcoStrategy);
+    // console.log(this.selectedOcoStrategy);
     if (this.selectedOcoStrategy == 'ocoExit') {
       let order = this.validateOcoOrder();
       if (order) {
@@ -123,13 +123,13 @@ export class StrategyComponent {
       side: this.side,
       type: 'market'     
     }
-    console.log("Order : ",order);
+    // console.log("Order : ",order);
     this.cryptoService.$createTradingViewAlertOrder(order).subscribe((data: any) => {
-      console.log(data);
+      // console.log(data);
     });
   }
   onStrategyOrderPlaced(model: StrategyOrderModel) {
-    console.log('Strategy Order Placed', model);
+    // console.log('Strategy Order Placed', model);
     this.strategyPlaced.emit(model);
   }
   validateLimitOrder() {

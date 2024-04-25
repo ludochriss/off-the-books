@@ -10,6 +10,5 @@ export class TradeStrategyComponent {
   constructor() {}
   @Input() order: OrderModel;
   ngOnInit(): void {
-    console.log(this.order);
   }
 }
