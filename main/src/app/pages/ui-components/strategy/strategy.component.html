@@ -39,7 +39,6 @@
                 </mat-option>
               </mat-select>
             </mat-form-field>
-
           </form>
           <div class="container">
             <div class="row">
@@ -47,7 +46,6 @@
                 Process Strategy</button>
             </div>
           </div>
-
         </mat-card-content>
       </mat-card>
     </div>
@@ -117,17 +115,39 @@
         </mat-card-content>
       </mat-card>
     </div>
+
+    <!-- Market Order -->
     <div class="col-lg-4 col-sm-6">
       <mat-card class="b-1 shadow-none">
         <mat-card-header>
-          <mat-card-title>Strategy Builder</mat-card-title>
+          <mat-card-title>TradingView Alert Strategy</mat-card-title>
         </mat-card-header>
         <mat-card-content class="b-t-1">
-          <div class="row justify-content-center align-items-center flex-d">
-            <mat-card-title class="pulse">Coming soon!</mat-card-title>
-            <!-- <table mat-table>
-
-           </table> -->
+          <div class="p-5 m-10">
+            <mat-button-toggle-group class="w-100 d-flex">
+              <mat-button-toggle checked value="buy" class="button-toggle-buy flex-fill"
+                (change)="selectSide($event)">Buy</mat-button-toggle>
+              <mat-button-toggle value="sell" class="button-toggle-sell flex-fill"
+                (change)="selectSide($event)">Sell</mat-button-toggle>
+            </mat-button-toggle-group>
+          </div>
+          <form [formGroup]="marketForm">          
+            <mat-form-field class="w-100" appearance="outline">
+              <mat-label>Quantity</mat-label>
+              <input matInput formControlName="marketQuantity" placeholder="Order quantity" />
+            </mat-form-field>
+            <!-- TODO:Make this a dropdown of pairs from binance -->
+            <mat-form-field class="w-100" appearance="outline">
+              <mat-label>Market Pair Symbol</mat-label>
+              <input matInput formControlName="marketPair" placeholder="e.g. BTCUSDT" />
+            </mat-form-field>
+         
+          </form>
+          <div class="container">
+            <div class="row">
+              <button class="col" mat-flat-button color="primary" (click)="createTradingViewAlertOrder()">
+                Create Order</button>
+            </div>
           </div>
 
           <div class="container">

@@ -4,6 +4,7 @@ import { MatButtonToggleChange } from '@angular/material/button-toggle';
 import { MatSelectChange } from '@angular/material/select';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { OrderModel, StrategyOrderModel } from 'src/app/models/order.model';
+import { CryptoService } from 'src/app/services/cryptoService';
 
 @Component({
   selector: 'app-strategy',
@@ -14,6 +15,19 @@ export class StrategyComponent {
   side: string = '';
   selectedOcoStrategy: string = '';
   selectedLimitStrategy: string = '';
+
+
+  marketForm = new FormGroup({
+
+    marketQuantity: new FormControl('', [
+      Validators.required,
+      Validators.pattern('^[0-9]*.?[0-9]*$'),
+    ]),
+    marketPair: new FormControl('', [
+      Validators.required,
+      Validators.pattern('^[a-zA-Z]*$'),
+    ])     
+  });
 
   limitForm = new FormGroup({
     limitPrice: new FormControl('', [
@@ -71,7 +85,7 @@ export class StrategyComponent {
   strategy: any[] = [];
   @Output() strategyPlaced = new EventEmitter<StrategyOrderModel>();
 
-  constructor(private snackBar: MatSnackBar) {}
+  constructor(private snackBar: MatSnackBar,private cryptoService:CryptoService) {}
   ngOnInit() {
     this.side = 'buy';
   }
@@ -102,11 +116,22 @@ export class StrategyComponent {
       }
     }
   }
+  createTradingViewAlertOrder(){
+    let order = {
+      symbol: this.marketForm.get('marketPair')?.value,
+      quantity: this.marketForm.get('marketQuantity')?.value,
+      side: this.side,
+      type: 'market'     
+    }
+    console.log("Order : ",order);
+    this.cryptoService.$createTradingViewAlertOrder(order).subscribe((data: any) => {
+      console.log(data);
+    });
+  }
   onStrategyOrderPlaced(model: StrategyOrderModel) {
     console.log('Strategy Order Placed', model);
     this.strategyPlaced.emit(model);
   }
-
   validateLimitOrder() {
     let lp = this.limitForm.get('limitPrice')?.value;
     let lq = this.limitForm.get('limitQuantity')?.value;

@@ -33,6 +33,11 @@ export class CryptoService {
       headers: headers,
     });
   }
+  $createTradingViewAlertOrder(orderModel:any): Observable<any> {
+    return this.client.post(this.cryptoApiUrl + '/CreateTradingViewAlertOrder', orderModel,{
+      headers: headers,
+    });
+  }
 
   $postOrder(orderModel: any): Observable<any> {
     let payload = this.buildOrderPayload(orderModel);
