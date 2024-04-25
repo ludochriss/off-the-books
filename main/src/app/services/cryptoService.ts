@@ -11,8 +11,7 @@ import { OrderModel, OrderTriggerModel, StrategyOrderModel } from '../models/ord
 // QueryExistingOrders: [GET,POST] http://localhost:7071/api/QueryExistingOrders
 const headers = new HttpHeaders({
   'Content-Type': 'application/json',
-  Accept: 'application/json',
- 
+  Accept: 'application/json', 
 });
 @Injectable({ providedIn: 'root' })
 export class CryptoService {
@@ -22,9 +21,7 @@ export class CryptoService {
   $getAccountInfo(): Observable<any> {
     return this.client.get(this.cryptoApiUrl + '/GetAccountInfo');
   }
-
   $cancelOrderById(orderId: number,symbol:string): Observable<any> {
-
     let body = {
       orderId: orderId,
       symbol: symbol.toUpperCase(),
@@ -41,7 +38,6 @@ export class CryptoService {
 
   $postOrder(orderModel: any): Observable<any> {
     let payload = this.buildOrderPayload(orderModel);
-    console.log('sending order payload: ', payload);
     return this.client.post(this.cryptoApiUrl + '/CreateOrder', payload, {
       headers: headers,
     });
@@ -66,7 +62,9 @@ $getStrategyOrders(): Observable<any> {
       headers: headers,
     });
   }
-
+  $getTradingViewOrders(): Observable<any> {
+    return this.client.get(this.cryptoApiUrl + '/GetTradingViewOrders');
+  }
   // buildStrategyPayload(
   //   order: OrderModel,
   //   orderType: string,

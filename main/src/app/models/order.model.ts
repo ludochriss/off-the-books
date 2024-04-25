@@ -36,6 +36,14 @@ export interface StrategyOrderModel{
 export interface OrderTriggerModel{
   orderId:string,
   triggerType:string,
-
 }
+export interface TradingViewOrder{
+  symbol:string,
+  id:string,
+  executed:string,
+  quantity:number,
+  side:string,
+  createdAt:string
+}
+
 
