@@ -13,7 +13,7 @@ export class TradingviewOrdersComponent {
   paginator: any;
   tradingViewOrders: TradingViewOrder[];
   tradingViewOrderDataSource: MatTableDataSource<TradingViewOrder> = new MatTableDataSource<TradingViewOrder>();
-  displayedColumns = ['symbol', 'id', 'quantity', 'side', 'createdAt', 'actions'];
+  displayedColumns = ['symbol', 'id', 'quantity', 'side', 'createdAt','executed', 'actions'];
   constructor(private cryptoService: CryptoService, private snackBar: MatSnackBar, private clipboard: Clipboard) { }
   ngOnInit() {
     this.getTradingViewOrders();
@@ -25,15 +25,18 @@ export class TradingviewOrdersComponent {
         return {
           symbol: orderData.PartitionKey,
           id: orderData.RowKey,
-          executed: orderData.executed ? orderData.executed.toString() : "Not Available",
+          executed: orderData.executed.toString(),
           quantity: parseFloat(orderData.quantity),
           side: orderData.side,
-          createdAt: orderData.createdAt ? orderData.createdAt.toString() : "Not Available",
+          createdAt: orderData.orderCreated.toString()
         };
       });
       this.tradingViewOrderDataSource.data = this.tradingViewOrders;
       console.log('TradingView Orders', this.tradingViewOrders);
     });
+  }
+  onRefreshClicked(){
+    this.getTradingViewOrders();
   }
   onCopyClicked(type: string,id:string) {
     if (type == 'id') {

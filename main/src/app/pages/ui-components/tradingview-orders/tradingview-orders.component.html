@@ -1,60 +1,68 @@
 <div class="col" *ngIf="tradingViewOrders">
   <mat-card class="b-1 shadow-none">
     <mat-card-header>
-      <mat-card-title>All TV Orders</mat-card-title>
+
     </mat-card-header>
     <mat-card-content class="b-t-1">
       <div class="container">
         <div class="row">
-          <div class="col d-flex justify-content-center">
-
+          <div class="col d-flex justify-content-between">
+            <mat-card-title>All TV Orders</mat-card-title>
+            <span (click)="onRefreshClicked()" class="material-icons icon">
+              refresh
+            </span>
           </div>
         </div>
       </div>
-      <mat-card  class="cardWithShadow theme-card">        
-          <table mat-table [dataSource]="tradingViewOrderDataSource">
-            <ng-container matColumnDef="symbol">
-              <th mat-header-cell *matHeaderCellDef> Symbol </th>
-              <td mat-cell *matCellDef="let tradingViewOrder"> {{tradingViewOrder.symbol}} </td>
-            </ng-container>
-            <ng-container matColumnDef="id">
-              <th mat-header-cell *matHeaderCellDef> TradingView Order ID </th>
-              <td mat-cell *matCellDef="let tradingViewOrder">{{tradingViewOrder.id}}
-              </td>
-            </ng-container>
-            <ng-container matColumnDef="side">
-              <th mat-header-cell *matHeaderCellDef> Side </th>
-              <td mat-cell *matCellDef="let tradingViewOrder"> {{tradingViewOrder.side}} </td>
-            </ng-container>
-            <ng-container matColumnDef="quantity">
-              <th mat-header-cell *matHeaderCellDef> Quantity </th>
-              <td mat-cell *matCellDef="let tradingViewOrder">{{tradingViewOrder.quantity}}
-              </td>
-            </ng-container>
-            <ng-container matColumnDef="createdAt">
-              <th mat-header-cell *matHeaderCellDef> Created At Utc </th>
-              <td mat-cell *matCellDef="let tradingViewOrder">{{tradingViewOrder.createdAt}}
-              </td>
-            </ng-container>
-            <ng-container matColumnDef="actions">
-              <th mat-header-cell *matHeaderCellDef> Actions </th>
-              <td mat-cell *matCellDef="let tradingViewOrder">
-               <div class="row">
-                 <span class="material-icons icon" (click)="onCopyClicked('id',tradingViewOrder.id)">
-                   content_copy
-                  </span>
-                  <span class="material-icons icon" (click)="onCopyClicked('json',tradingViewOrder.id)">
-                    data_object
-                  </span>
-                </div> 
-              </td>
-            </ng-container>
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns ;"></tr>
-          </table>
-          <mat-paginator [pageSizeOptions]="[5,10,20]" [length]="5" [pageSize]="5" showFirstLastButtons>
-          </mat-paginator>
-        
+      <mat-card class="cardWithShadow theme-card">
+        <table mat-table [dataSource]="tradingViewOrderDataSource">
+          <ng-container matColumnDef="symbol">
+            <th mat-header-cell *matHeaderCellDef> Symbol </th>
+            <td mat-cell *matCellDef="let tradingViewOrder"> {{tradingViewOrder.symbol}} </td>
+          </ng-container>
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef> TradingView Order ID </th>
+            <td mat-cell *matCellDef="let tradingViewOrder">{{tradingViewOrder.id}}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="side">
+            <th mat-header-cell *matHeaderCellDef> Side </th>
+            <td mat-cell *matCellDef="let tradingViewOrder"> {{tradingViewOrder.side}} </td>
+          </ng-container>
+          <ng-container matColumnDef="quantity">
+            <th mat-header-cell *matHeaderCellDef> Quantity </th>
+            <td mat-cell *matCellDef="let tradingViewOrder">{{tradingViewOrder.quantity}}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="createdAt">
+            <th mat-header-cell *matHeaderCellDef> Created At Utc </th>
+            <td mat-cell *matCellDef="let tradingViewOrder">{{tradingViewOrder.createdAt}}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="executed">
+            <th mat-header-cell *matHeaderCellDef> Active Order </th>
+            <td mat-cell *matCellDef="let tradingViewOrder">{{tradingViewOrder.executed}}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef> Actions </th>
+            <td mat-cell *matCellDef="let tradingViewOrder">
+              <div class="row">
+                <span class="material-icons icon" (click)="onCopyClicked('id',tradingViewOrder.id)">
+                  content_copy
+                </span>
+                <span class="material-icons icon" (click)="onCopyClicked('json',tradingViewOrder.id)">
+                  data_object
+                </span>
+              </div>
+            </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns ;"></tr>
+        </table>
+        <mat-paginator [pageSizeOptions]="[5,10,20]" [length]="5" [pageSize]="5" showFirstLastButtons>
+        </mat-paginator>
+
       </mat-card>
     </mat-card-content>
   </mat-card>
