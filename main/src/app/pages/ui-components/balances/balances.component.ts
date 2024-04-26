@@ -26,28 +26,21 @@ export class BalancesComponent {
     this.cryptoService.$getAccountInfo().subscribe((data: any) => {
       this.accInfo = data;
       if (this.accInfo && Array.isArray(this.accInfo.responseData.balances)) {
-        this.spotAssets = this.accInfo.responseData.balances.map(
-          (balance: any) => {
-            if (balance.free > 0 || balance.locked > 0) {
-              return {
-                asset: balance.asset,
-                free: parseFloat(balance.free),
-                locked: parseFloat(balance.locked),
-              }
-            }
-            else {
-              return null;
-            }
-          }
-        );
+        this.spotAssets = this.accInfo.responseData.balances
+          .filter((balance: any) => balance.free > 0 || balance.locked > 0)
+          .map((balance: any) => ({
+            asset: balance.asset,
+            free: parseFloat(balance.free),
+            locked: parseFloat(balance.locked),
+          }));
         this.spotAssetsDataSource = new MatTableDataSource<SpotAsset>(
           this.spotAssets
         );
         this.spotAssetsDataSource.paginator = this.paginator;
-        // console.log(this.spotAssetsDataSource);
-        // console.log(this.spotAssets);
+        console.log(this.spotAssetsDataSource);
+        console.log(this.spotAssets);
       } else {
       }
     });
   }
-}
+  }

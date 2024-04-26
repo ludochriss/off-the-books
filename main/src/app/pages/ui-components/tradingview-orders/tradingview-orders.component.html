@@ -1,9 +1,6 @@
 <div class="col" *ngIf="tradingViewOrders">
   <mat-card class="b-1 shadow-none">
     <mat-card-header>
-
-    </mat-card-header>
-    <mat-card-content class="b-t-1">
       <div class="container">
         <div class="row">
           <div class="col d-flex justify-content-between">
@@ -14,6 +11,8 @@
           </div>
         </div>
       </div>
+    </mat-card-header>
+    <mat-card-content class="b-t-1">     
       <mat-card class="cardWithShadow theme-card">
         <table mat-table [dataSource]="tradingViewOrderDataSource">
           <ng-container matColumnDef="symbol">
@@ -40,7 +39,7 @@
             </td>
           </ng-container>
           <ng-container matColumnDef="executed">
-            <th mat-header-cell *matHeaderCellDef> Active Order </th>
+            <th mat-header-cell *matHeaderCellDef> Order Executed </th>
             <td mat-cell *matCellDef="let tradingViewOrder">{{tradingViewOrder.executed}}
             </td>
           </ng-container>
